@@ -5,25 +5,24 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class MainGame {
 
+
+public class MainGame {
     private JFrame frame;
     private JPanel panel;
-    private JButton snakeGameButton, guessNumberGameButton, ticTacToeGameButton, brickBreakButton, exitButton;
+    private JButton snakeGameButton, guessNumberGameButton, ticTacToeGameButton, brickBreakButton, minesweepersButton, exitButton;
 
     public MainGame() {
-        // Setup main frame and panel
         frame = new JFrame("Game Center");
-        panel = new JPanel(new GridLayout(5, 1, 10, 10)); // 5 rows for buttons
+        panel = new JPanel(new GridLayout(6, 1, 10, 10)); // Updated to accommodate an additional button
 
-        // Initialize buttons
         snakeGameButton = new JButton("Play Snake Game");
         guessNumberGameButton = new JButton("Play Guess the Number Game");
         ticTacToeGameButton = new JButton("Play Tic Tac Toe");
         brickBreakButton = new JButton("Play Brick Breaker");
+        minesweepersButton = new JButton("Play Minesweepers");
         exitButton = new JButton("Exit");
 
-        // Snake Game button action
         snakeGameButton.addActionListener(e -> {
             frame.setVisible(false);
             SnakeGame snakeGame = new SnakeGame();
@@ -34,7 +33,6 @@ public class MainGame {
             });
         });
 
-        // Guess Number Game button action
         guessNumberGameButton.addActionListener(e -> {
             frame.setVisible(false);
             GuessNumberGame guessNumberGame = new GuessNumberGame(100);
@@ -46,7 +44,6 @@ public class MainGame {
             });
         });
 
-        // Tic Tac Toe button action
         ticTacToeGameButton.addActionListener(e -> {
             frame.setVisible(false);
             ticTacToeGame ticTacToe = new ticTacToeGame();
@@ -57,7 +54,6 @@ public class MainGame {
             });
         });
 
-        // Brick Breaker button action
         brickBreakButton.addActionListener(e -> {
             frame.setVisible(false);
             BrickBreak.main(new String[0]); // Launch Brick Breaker
@@ -68,19 +64,28 @@ public class MainGame {
             });
         });
 
-        // Exit button action
+        minesweepersButton.addActionListener(e -> {
+            frame.setVisible(false);
+            MineSweepers mineSweepersGame = new MineSweepers();
+            mineSweepersGame.setVisible(true);
+            mineSweepersGame.addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e) {
+                    frame.setVisible(true);
+                }
+            });
+        });
+
         exitButton.addActionListener(e -> System.exit(0));
 
-        // Adding buttons to panel
         panel.add(snakeGameButton);
         panel.add(guessNumberGameButton);
         panel.add(ticTacToeGameButton);
         panel.add(brickBreakButton);
+        panel.add(minesweepersButton);
         panel.add(exitButton);
 
-        // Frame setup
         frame.add(panel);
-        frame.setSize(400, 250); // Size for 5 buttons
+        frame.setSize(400, 300); // Adjusted size for six buttons
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
