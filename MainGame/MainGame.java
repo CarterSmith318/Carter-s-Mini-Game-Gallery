@@ -10,7 +10,7 @@ import java.awt.event.WindowEvent;
 public class MainGame {
     private JFrame frame;
     private JPanel panel;
-    private JButton snakeGameButton, guessNumberGameButton, ticTacToeGameButton, brickBreakButton, minesweepersButton, exitButton;
+    private JButton snakeGameButton, guessNumberGameButton, ticTacToeGameButton, brickBreakButton, minesweepersButton, MemoryGame, exitButton;
 
     public MainGame() {
         frame = new JFrame("Game Center");
@@ -21,10 +21,11 @@ public class MainGame {
         ticTacToeGameButton = new JButton("Play Tic Tac Toe");
         brickBreakButton = new JButton("Play Brick Breaker");
         minesweepersButton = new JButton("Play Minesweepers");
+        MemoryGame = new JButton("Play Memory Game");
         exitButton = new JButton("Exit");
 
         snakeGameButton.addActionListener(e -> {
-            frame.setVisible(false);
+            //frame.setVisible(false); old
             SnakeGame snakeGame = new SnakeGame();
             snakeGame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
@@ -34,7 +35,7 @@ public class MainGame {
         });
 
         guessNumberGameButton.addActionListener(e -> {
-            frame.setVisible(false);
+            //frame.setVisible(false);
             GuessNumberGame guessNumberGame = new GuessNumberGame(100);
             guessNumberGame.setVisible(true);
             guessNumberGame.addWindowListener(new WindowAdapter() {
@@ -45,7 +46,7 @@ public class MainGame {
         });
 
         ticTacToeGameButton.addActionListener(e -> {
-            frame.setVisible(false);
+            //frame.setVisible(false);
             ticTacToeGame ticTacToe = new ticTacToeGame();
             ticTacToe.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
@@ -55,7 +56,7 @@ public class MainGame {
         });
 
         brickBreakButton.addActionListener(e -> {
-            frame.setVisible(false);
+            //frame.setVisible(false);
             BrickBreak.main(new String[0]); // Launch Brick Breaker
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
@@ -65,10 +66,21 @@ public class MainGame {
         });
 
         minesweepersButton.addActionListener(e -> {
-            frame.setVisible(false);
+            //frame.setVisible(false);
             MineSweepers mineSweepersGame = new MineSweepers();
             mineSweepersGame.setVisible(true);
             mineSweepersGame.addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e) {
+                    frame.setVisible(true);
+                }
+            });
+        });
+
+        MemoryGame.addActionListener(e -> {
+            //frame.setVisible(false);
+            MemoryGame memoryGame = new MemoryGame();
+            memoryGame.setVisible(true);
+            memoryGame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     frame.setVisible(true);
                 }
@@ -82,6 +94,7 @@ public class MainGame {
         panel.add(ticTacToeGameButton);
         panel.add(brickBreakButton);
         panel.add(minesweepersButton);
+        panel.add(MemoryGame);
         panel.add(exitButton);
 
         frame.add(panel);
