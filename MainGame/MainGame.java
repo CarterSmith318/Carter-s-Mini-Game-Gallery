@@ -10,7 +10,7 @@ import java.awt.event.WindowEvent;
 public class MainGame {
     private JFrame frame;
     private JPanel panel;
-    private JButton snakeGameButton, guessNumberGameButton, ticTacToeGameButton, brickBreakButton, minesweepersButton, MemoryGame, exitButton;
+    private JButton snakeGameButton, guessNumberGameButton, ticTacToeGameButton, brickBreakButton, minesweepersButton, MemoryGame, SimonSaysGame, exitButton;
 
     public MainGame() {
         frame = new JFrame("Game Center");
@@ -22,10 +22,11 @@ public class MainGame {
         brickBreakButton = new JButton("Play Brick Breaker");
         minesweepersButton = new JButton("Play Minesweepers");
         MemoryGame = new JButton("Play Memory Game");
+        SimonSaysGame = new JButton("Play Simon Says Game");
         exitButton = new JButton("Exit");
 
         snakeGameButton.addActionListener(e -> {
-            //frame.setVisible(false); old
+            // frame.setVisible(false); old
             SnakeGame snakeGame = new SnakeGame();
             snakeGame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
@@ -35,7 +36,7 @@ public class MainGame {
         });
 
         guessNumberGameButton.addActionListener(e -> {
-            //frame.setVisible(false);
+            //frame.setVisible(false); 
             GuessNumberGame guessNumberGame = new GuessNumberGame(100);
             guessNumberGame.setVisible(true);
             guessNumberGame.addWindowListener(new WindowAdapter() {
@@ -87,6 +88,17 @@ public class MainGame {
             });
         });
 
+        SimonSaysGame.addActionListener(e -> {
+            //frame.setVisible(false);
+            SimonSaysGame simonSaysGame = new SimonSaysGame();
+            simonSaysGame.setVisible(true);
+            simonSaysGame.addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e) {
+                    frame.setVisible(true);
+                }
+            });
+        });
+
         exitButton.addActionListener(e -> System.exit(0));
 
         panel.add(snakeGameButton);
@@ -95,10 +107,11 @@ public class MainGame {
         panel.add(brickBreakButton);
         panel.add(minesweepersButton);
         panel.add(MemoryGame);
+        panel.add(SimonSaysGame);
         panel.add(exitButton);
 
         frame.add(panel);
-        frame.setSize(400, 300); // Adjusted size for six buttons
+        frame.setSize(400, 300); // Adjusted size for more buttons
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
