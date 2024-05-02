@@ -121,7 +121,7 @@ public class ticTacToeGame extends JFrame implements ActionListener, ComponentLi
         playerTurn = true;
     }
 
-    // Implement the componentResized method
+    // Implement the Resized method
     @Override
     public void componentResized(ComponentEvent e) {
         int buttonFontSize = this.getWidth() / 10; // Example formula for font size

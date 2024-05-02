@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class SimonSaysGame extends JFrame {
-    private final String[] shapes = {"Square", "Circle", "Triangle", "Rectangle", "Pentagon"};
+    private final String[] shapes = {"Square", "Circle", "Triangle", "Rectangle", "Pentagon"}; // Pentagon is the weird shape with the thin triangle on top
     private final Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.MAGENTA};
     private String[] currentShapes;
     private Color[] currentColors;
@@ -21,7 +21,7 @@ public class SimonSaysGame extends JFrame {
     private int targetIndex;
     private Random rand = new Random();
     private Timer timer; // Timer object
-    private int timeLeft = 10; // Time left, starting at 15 seconds
+    private int timeLeft = 10; // Time left, starting at 10 seconds // Change to 15 seconds//started with 60 too long
 
     public SimonSaysGame() {
         super("Simon Says Game");
